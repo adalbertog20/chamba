@@ -10,7 +10,7 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
 
     const { data, setData, patch, errors, processing, recentlySuccessful } = useForm({
         name: user.name,
-        email: user.email,
+        email: user.email
     });
 
     const submit = (e) => {
@@ -60,6 +60,45 @@ export default function UpdateProfileInformation({ mustVerifyEmail, status, clas
                     />
 
                     <InputError className="mt-2" message={errors.email} />
+                </div>
+
+
+                <div>
+                    <InputLabel htmlFor="street" value="Street"></InputLabel>
+                    <TextInput id="street" className="mt-1 block w-full"
+                        value={data.street}
+                        onChange={(e) => setData('street', e.target.value)}
+                        required
+                        autoComplete="street"
+                    />
+                </div>
+
+                <div>
+                    <InputLabel value="Postal code"></InputLabel>
+                    <TextInput id="postal_code" className="mt-1 block w-full"
+                        value={data.postal_code}
+                        onChange={(e) => setData('postal_code', e.target.value)}
+                        required
+                        autoComplete="postal_code"
+                    />
+                </div>
+                <div>
+                    <InputLabel value="Number"></InputLabel>
+                    <TextInput id="postal_code" className="mt-1 block w-full"
+                        value={data.postal_code}
+                        onChange={(e) => setData('postal_code', e.target.value)}
+                        required
+                        autoComplete="postal_code"
+                    />
+                </div>
+                <div>
+                    <InputLabel value="City"></InputLabel>
+                    <TextInput id="city" className="mt-1 block w-full"
+                        value={data.city}
+                        onChange={(e) => setData('city', e.target.value)}
+                        required
+                        autoComplete="city"
+                    />
                 </div>
 
                 {mustVerifyEmail && user.email_verified_at === null && (
