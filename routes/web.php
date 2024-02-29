@@ -7,17 +7,6 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -41,6 +30,10 @@ Route::group(['prefix' => 'address'], function () {
     Route::post('/store', [AddressController::class, 'store'])->name('address.store');
     Route::put('/{address}/store', [AddressController::class, 'update'])->name('address.update');
     Route::delete('/{address}/store', [AddressController::class, 'destroy'])->name('address.destroy');
+});
+
+Route::group(['prefix' => 'plan'], function () {
+    Route::get('/', [PlanController::class, 'index'])->name('plan.index');
 });
 
 Route::middleware('auth')->get('/plans', [PlanController::class, 'index'])->name('plans.index');
