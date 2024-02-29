@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Address extends Model
 {
     use HasFactory;
+    protected $fillable = ['street', 'postal_code', 'number', 'city'];
+    protected $hidden = [];
+
+    protected $casts = [];
 }

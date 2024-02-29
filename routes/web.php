@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -34,6 +35,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::group(['prefix' => 'address'], function () {
+    Route::post('/store', [AddressController::class, 'store'])->name('address.store');
+    Route::put('/{address}/store', [AddressController::class, 'update'])->name('address.update');
+    Route::delete('/{address}/store', [AddressController::class, 'destroy'])->name('address.destroy');
 });
 
 Route::middleware('auth')->get('/plans', [PlanController::class, 'index'])->name('plans.index');
